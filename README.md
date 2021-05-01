@@ -8,3 +8,5 @@
 * Adding `ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);` in your `main` function sometimes helps in avoiding unnecessary TLE verdict by online judges.
   * This makes ```cin``` and ```cout``` as fast as ```printf``` and ```scanf``` which reduces time.
 * (a - b + m) % m = ((a%m) - (b%m) + **m**) % m
+* We can use memset() to set all values of integer array to 0 or -1 only. Doesnot work with other values like 1, 5, 132 etc..
+  * Because memset works byte by byte.
