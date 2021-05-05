@@ -10,3 +10,5 @@
 * (a - b + m) % m = ((a%m) - (b%m) + **m**) % m
 * We can use memset() to set all values of integer array to 0 or -1 only. Doesnot work with other values like 1, 5, 132 etc..
   * Because memset works byte by byte.
+* vector<int> v[N] -> an array of N different vector<int> objects, can be used as a 2D array.
+  * For weighted graph implementation as Adjacency list, we use `vector<pair<int, int> > adj[V];`, where V is the Maximum possible vertex.
