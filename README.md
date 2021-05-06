@@ -13,3 +13,4 @@
 * vector<int> v[N] -> an array of N different vector<int> objects, can be used as a 2D array.
   * For weighted graph implementation as Adjacency list, we use `vector<pair<int, int> > adj[V];`, where V is the Maximum possible vertex.
 * When you are given expressions in CP problems, try to simplify it by rearranging before jumping into the problem.
+* If you want the `priority_queue` in decreasing order, *that is first element largest then smaller and smaller*, in custom comparator function use `return a < b` which is in contrast to what we do in vectors.
