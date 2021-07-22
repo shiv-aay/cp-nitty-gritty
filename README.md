@@ -16,3 +16,4 @@
 * If you want the `priority_queue` in decreasing order, *that is first element largest then smaller and smaller*, in custom comparator function use `return a < b` which is in contrast to what we do in vectors.
 * For P and N, P % N must be a multiple of their common factor.
 * `stringstream ss(s)` is used in cpp for easy tokenization of string s, just like python.
+* While giving custom_sort() function for sort(), the function has to be decisive otherwise it may end up in a infinite loop giving RE. That is for any element i, if custom_sort(a[i] , b[i]) is `true` custom_sort(b[i] , a[i]) must be `false`.
