@@ -7,6 +7,27 @@ using namespace __gnu_pbds;
   
 #define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
 
+// Euler Circuit (recursive code)
+void EulerCycle(){
+    vector<int> adj[4] = {
+        {1,2} , {0,3} , {3} , {0,1}
+    } , ans;
+    function<void(int)> dfs = [&](int node){
+        while(adj[node].size()){
+            int child = adj[node].back();
+            adj[node].pop_back();
+            dfs(child);
+        }
+        ans.push_back(node);
+    };
+    dfs(0);
+    for (int i=ans.size()-1; i>=0; i--)
+    {
+        cout << ans[i];
+        if (i)
+           cout<<" -> ";
+    }
+}
 
 class DSU{
     vector<int> p;
