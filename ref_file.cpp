@@ -221,6 +221,49 @@ int crt(vector<int> p , vector<int> k){
     }
     return ans;
 }
+
+// number of topological arrangements in a directed tree
+  const int M = 1e9+7;
+  int binpow(int a, int b){
+    if(b == 0) return 1;
+    if(b & 1)
+        return (a * 1ll * binpow(a , b-1)) % M;
+    return binpow((a*1ll*a)%M , b/2);
+  }
+  int div(int a, int b){
+    return mul(a,binpow(b , M-2));
+  }
+  int mul(int a ,  int b){
+    return (a*1ll*b)%M;
+  }
+  int waysToBuildRooms(vector<int>& p) {
+    // p[i] is parent of i;
+    int n = p.size();
+    vector<int> adj[n] , sz(n) , fact(1e5+1);
+    for(int i = 1; i < n; i++){
+        adj[p[i]].push_back(i);
+    }
+    fact[0] = 1;
+    for(int i = 1; i <= 1e5; i++){
+        fact[i] = (i * 1ll * fact[i-1]) % M;
+    }
+    unordered_map<int , int> mp;
+    function<int(int)> dp = [&](int node){
+        if(mp.find(node) != mp.end())
+            return mp[node];
+        mp[node] = 1;
+        for(int child : adj[node]){
+            mp[node] = mul(mp[node] , dp(child));
+            mp[node] = div(mp[node] , fact[sz[child]]);
+            sz[node] += sz[child];
+        }
+        mp[node] = mul(mp[node] , fact[sz[node]]);
+        sz[node]++; // add self
+        return mp[node];
+    };
+    return dp(0);
+  }
+
 signed main(){
     // testBIT();
     vector<int> num = { 2,3,5,7,11,13,17,19 } , rem = { 1,2, 3,4,5,6,7,8 };
