@@ -18,3 +18,4 @@
 * `stringstream ss(s)` is used in cpp for easy tokenization of string s, just like python.
 * While giving custom_sort() function for sort(), the function has to be decisive otherwise it may end up in an infinite loop giving RE. That is for any element i, if custom_sort(a[i] , b[i]) is `true` custom_sort(b[i] , a[i]) must be `false` and vice versa.
   * Beacuse std::sort() is not stable sort.
+* Use vector instead of array, when size is too large. Memory allocation to array is limited.
